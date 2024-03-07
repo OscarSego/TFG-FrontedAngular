@@ -1,0 +1,39 @@
+<body class="background-image">
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form>
+
+          <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold text-light mx-3 mb-0">LOGIN</p>
+          </div>
+
+          <!-- Email -->
+          <div class="form-outline mb-4">
+            <input type="email" id="form3Example3"  [(ngModel)]="email" [ngModelOptions]="{standalone: true}" class="form-control form-control-lg" placeholder="Introduce el email" />
+            <label class="form-label text-light" for="form3Example3">Email</label>
+          </div>
+
+          <!-- Password -->
+          <div class="form-outline mb-3">
+            <input type="password" id="form3Example4" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" class="form-control form-control-lg" placeholder="Introduce la password" />
+            <label class="form-label text-light" for="form3Example4">Password</label>
+          </div>
+
+          <!-- Boton Login y Registro -->
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="button" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="login()">Login</button>
+            <p class="small fw-bold text-light mt-2 pt-1 mb-0">No tienes cuenta? <a routerLink="/signin" class="link-danger">Registrar</a></p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
