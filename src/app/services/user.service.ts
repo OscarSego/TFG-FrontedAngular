@@ -1,27 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
-import { Observable } from 'rxjs';
+import { Observable,BehaviorSubject  } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private apiAppUrl:string = 'http://localhost:3001/';
-  private apiUrl: string = 'api/users/';
+  private loggedIn = false;
 
   constructor(private httpClient:HttpClient) {}
 
   signIn(user: User): Observable<any>{
-    console.log(`${this.apiAppUrl}${this.apiUrl}`);
-    console.log(user)
+
     return this.httpClient.post<any>('/api/users',user);
   }
 
   login(user: User): Observable<any>{
-    console.log(user)
-    console.log("llega")
+
     return this.httpClient.post<any>('/api/users/login',user)
   }
+
+  setLoggedIn(value: boolean) {
+    this.loggedIn = value;
+  }
+
+  isLoggedIn(): boolean {
+
+    return this.loggedIn;
+  }
+  
 }

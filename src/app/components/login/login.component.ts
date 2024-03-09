@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -45,12 +46,20 @@ export class LoginComponent {
     }
  
     this._userService.login(user).subscribe({
+     
       
       next: (token) =>{
+        console.log(this.password)
         
         localStorage.setItem('token',JSON.stringify(token))
+        this._userService.setLoggedIn(true);
         this.router.navigate(['/home'])
         console.log(token)
+      },
+      error: (e: HttpErrorResponse) =>{
+        if(e.error.msg){
+          alert(e.error.msg)
+        }
       }
     })
 
