@@ -6,6 +6,7 @@ import { Product } from '../../interfaces/product';
 import { ProductService } from '../../services/products.service';
 import { HeaderComponent } from '../header/header.component';
 
+
 @Component({
   selector: 'app-product',
   standalone: true,
@@ -15,19 +16,35 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class ProductComponent {
 
-  product: Product | null = null;
-  loading = false;
   listProducts: Product[] = [];
+  
+  constructor(private _productService: ProductService){}
 
-  constructor(private _productService: ProductService,
-    private router: Router) {}
+  ngOnInit(): void{
+    this.getProductList();
+  }
 
-  ngOnInit() {
-    this._productService.searchedProduct$.subscribe(
-      (product: Product | null) => {
-        console.log('Producto buscado:', product);
-        this.product = product;
+  getProductList(){
+    this._productService.listProducts().subscribe((data: any[]) => {
+      if (Array.isArray(data) && data.length > 0) {
+        console.table(data);
+        this.listProducts = data;
+      } else {
+        console.error("La respuesta del servicio no contiene una lista de productos válida o está vacía.");
+      }
+    });
+  }
+
+  agregarAlCarrito(productoId: number): void {
+    this._productService.agregarAlCarrito(productoId).subscribe(
+      (productos: Product[]) => {
+        // Manejar la respuesta aquí si es necesario
+      },
+      (error) => {
+        console.error(error);
+        // Manejar el error aquí, por ejemplo, redirigir a la página de inicio de sesión si hay un error de autorización
       }
     );
-    }
+  }
+
 }

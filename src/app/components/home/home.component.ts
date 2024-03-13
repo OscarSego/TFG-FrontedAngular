@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { HeaderComponent } from '../header/header.component';
+import { ProductService } from '../../services/products.service';
+import { Product } from '../../interfaces/product';
 
 @Component({
   selector: 'app-home',

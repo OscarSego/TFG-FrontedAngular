@@ -9,3 +9,15 @@ export interface Product{
     created: string; 
     updated: string; 
 }
+
+export interface CartItem {
+    id: number;
+    product: number;
+    quantity: number;
+  }
+  
+  export interface Cart {
+    id: number;
+    user: number;
+    products: CartItem[];
+  }

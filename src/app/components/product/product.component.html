@@ -1,20 +1,18 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
-
 <div class="container mt-4">
-  <div *ngIf="product" class="row">
-    <div class="col-md-6">
-      <div class="text-center">
-        <img [src]="product.imagen" alt="{{ product.nombre }}" class="img-fluid">
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="d-flex justify-content-center flex-column align-items-center">
-        <h2 class="font-weight-bold">{{ product.nombre }}</h2>
-        <p>{{ product.descripcion }}</p>
-        <p><strong>Precio:</strong> {{ product.precio | currency }}</p>
-        <!-- Botones de agregar -->
-        <button class="btn btn-primary">Agregar al carrito</button>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of listProducts">
+      <div class="card">
+        <img class="card-img-top" src="{{ product.imagen }}" alt="{{ product.nombre }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.nombre }}</h5>
+          <p class="card-text">{{ product.descripcion }}</p>
+          <p class="card-text"><strong>Precio:</strong> {{ product.precio }}</p>
+          <button class="btn btn-primary" (click)="agregarAlCarrito(product.id)">Agregar al carrito</button>
+          <!-- Utiliza la propiedad correcta que representa el ID del producto en la llamada a la función -->
+          <a href="#" class="btn btn-primary">Ver detalles</a>
+        </div>
       </div>
     </div>
   </div>

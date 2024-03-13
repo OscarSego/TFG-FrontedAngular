@@ -1,0 +1,23 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="container">
+    <h2>Carrito de Compras</h2>
+    <div *ngIf="elementosCarrito && elementosCarrito.length > 0" class="row">
+      <div *ngFor="let elemento of elementosCarrito" class="col-md-4 mb-4">
+        <div class="card">
+          <img [src]="elemento.imagen_producto" class="card-img-top" alt="{{ elemento.nombre_producto }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ elemento.nombre_producto }}</h5>
+            <p class="card-text">Precio: {{ elemento.precio_producto }}</p>
+            <p class="card-text">Cantidad: {{ elemento.cantidad }}</p>
+            <p class="card-text">Total: {{ elemento.cantidad * elemento.precio_producto }}</p>
+            <!-- Puedes agregar más detalles si los tienes -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!elementosCarrito || elementosCarrito.length === 0">
+      <p>No hay elementos en el carrito.</p>
+    </div>
+  </div>
+  

@@ -31,7 +31,7 @@ export class NavbarComponent {
       this._productService.searchProduct(nombre).subscribe(data => {
         console.log(data)
         this._productService.setSearchedProduct(data);
-        this.router.navigate(['/producto']);
+        this.router.navigate(['/product-search']);
       })
     }
   }
