@@ -34,20 +34,6 @@ export class ProductService {
         ))
     }
 
-    verCarrito(): Observable<any> {
-      const token = this.extractToken();
-
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-      return this.httpClient.get('http://localhost:8000/api/producto/ver-carrito/', {headers}).pipe(
-      catchError((error:HttpErrorResponse) =>{
-        if(error.status === 400 || error.status === 401){
-          this.router.navigate(['/login']);
-        }
-        return throwError(error);
-      }
-      ))
-    }
   
     agregarAlCarrito(productoId: number): Observable<any> {
       const token = this.extractToken();

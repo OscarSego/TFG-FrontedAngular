@@ -11,6 +11,7 @@ export interface UserCarrito {
     carrito: UserCarrito;
     producto: Producto;
     usuario_id: number;
+    producto_id: number;
     cantidad: number;
     nombre_producto: string;
     precio_producto: number;

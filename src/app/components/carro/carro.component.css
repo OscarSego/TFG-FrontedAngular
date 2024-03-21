@@ -1,0 +1,22 @@
+.cantidad-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cantidad {
+    margin: 0 10px; /* Espacio entre la cantidad y los botones */
+  }
+  
+  .btn-aumentar {
+    background-color: #007bff; /* Azul */
+    border-color: #007bff;
+    color: #fff; /* Texto en blanco */
+  }
+  
+  .btn-quitar {
+    margin-left: 5px; /* Espacio entre los botones */
+    background-color: #ff8080; /* Rojo más claro */
+    border-color: #ff8080;
+    color: #fff; /* Texto en blanco */
+  }
+  

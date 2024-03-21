@@ -17,6 +17,7 @@ import { UserItemCarrito } from '../../interfaces/carro';
 export class CarroComponent {
 
   elementosCarrito: UserItemCarrito[] = [];
+  itemID: number = 0;
 
   constructor(private carritoService: CarritoService) { }
 
@@ -28,12 +29,52 @@ export class CarroComponent {
     this.carritoService.verCarrito().subscribe(
       (data: UserItemCarrito[]) => {
         this.elementosCarrito = data;
-        console.log(this.elementosCarrito)
+        console.log(this.elementosCarrito);
       },
       (error) => {
         console.error('Error al obtener el carrito:', error);
-        // Manejar el error según tu lógica de la aplicación
       }
     );
+  }
+
+  aumentarCantidad(itemID: number): void {
+    console.log('Item ID:', itemID);
+    this.carritoService.aumentarCantidadProducto(itemID).subscribe(
+      (response) => {
+        console.log(response);
+        // Actualizar la vista llamando de nuevo a verCarrito()
+        this.verCarrito();
+      },
+      (error) => {
+        console.error('Error al aumentar la cantidad:', error);
+      }
+    );
+  }
+
+  disminuirCantidad(itemID: number): void {
+    console.log('Item ID:', itemID);
+    this.carritoService.disminuirCantidadProducto(itemID).subscribe(
+      (response) => {
+        console.log(response);
+        // Actualizar la vista llamando de nuevo a verCarrito()
+        this.verCarrito();
+      },
+      (error) => {
+        console.error('Error al aumentar la cantidad:', error);
+      }
+    );
+  }
+
+  borrarCarro(): void {
+    this.carritoService.borrarCarro()
+      .subscribe(
+        (data) => {
+          console.log('Carrito borrado correctamente');
+          this.verCarrito();
+        },
+        (error) => {
+          console.error('Error al borrar el carrito:', error);
+        }
+      );
   }
 }

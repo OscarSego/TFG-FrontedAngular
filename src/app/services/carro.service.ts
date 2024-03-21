@@ -28,6 +28,45 @@ import { Router } from '@angular/router';
               ))
       }
 
+    aumentarCantidadProducto(itemID: number): Observable<any> {
+      const token = this.extractToken();
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+      console.log(headers)
+  
+      return this.httpClient.post<any>(`http://localhost:8000/api/producto/aumentar-cantidad/${itemID}`, null,  { headers }).pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError(error);
+        })
+      );
+    }
+
+    disminuirCantidadProducto(itemID: number): Observable<any> {
+      const token = this.extractToken();
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+      console.log(headers)
+  
+      return this.httpClient.post<any>(`http://localhost:8000/api/producto/disminuir-cantidad/${itemID}`, null,  { headers }).pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError(error);
+        })
+      );
+    }
+
+    borrarCarro(): Observable<any> {
+      const token = this.extractToken();
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+      console.log(headers)
+  
+      return this.httpClient.post<any>(`http://localhost:8000/api/producto/borrar-carrito`, null,  { headers }).pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError(error);
+        })
+      );
+    }
+
     private extractToken(): string {
         const tokenData = localStorage.getItem('token');
         
