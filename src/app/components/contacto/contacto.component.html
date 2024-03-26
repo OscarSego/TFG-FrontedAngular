@@ -1,0 +1,26 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mb-4">Formulario de Contacto</h2>
+            <form id="contactForm" (ngSubmit)="enviarCorreo()">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" class="form-control" id="correo" name="correo" [(ngModel)]="correo" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea class="form-control" id="mensaje" name="mensaje" rows="5" [(ngModel)]="mensaje" required></textarea>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

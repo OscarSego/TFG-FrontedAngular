@@ -6,6 +6,7 @@ import { ProductComponent } from "./components/product/product.component"
 import { AuthGuard } from './services/authGuard';
 import { SearchProductComponent } from './components/search-product/search-product.component';
 import { CarroComponent } from './components/carro/carro.component'
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -14,5 +15,6 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent},
     { path: 'producto', component: ProductComponent,},
     { path: 'product-search', component: SearchProductComponent},
-    { path: 'carro-compra', component: CarroComponent}
+    { path: 'carro-compra', component: CarroComponent},
+    { path: 'contacto', component: ContactoComponent} 
 ];
