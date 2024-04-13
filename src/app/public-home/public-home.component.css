@@ -1,0 +1,12 @@
+.carousel-item img {
+    max-width: 55%; 
+    height: auto; 
+    max-height: 300px; 
+    margin: 0 auto; 
+    margin-top: 15px;
+  }
+  
+  .noticia-enlace {
+    color: #007bff;
+    text-decoration: underline;
+  }

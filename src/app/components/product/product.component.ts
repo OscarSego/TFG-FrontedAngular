@@ -5,12 +5,13 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { Product } from '../../interfaces/product';
 import { ProductService } from '../../services/products.service';
 import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [RouterOutlet, RouterModule,NavbarComponent,  CommonModule, HeaderComponent],
+  imports: [RouterOutlet, RouterModule,NavbarComponent,  CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })

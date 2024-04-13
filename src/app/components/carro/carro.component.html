@@ -14,7 +14,7 @@
   <div *ngIf="elementosCarrito && elementosCarrito.length > 0" class="row mt-4">
     <div *ngFor="let elemento of elementosCarrito; let i = index" class="col-md-4 mb-4">
       <div class="card">
-        <img [src]="elemento.imagen_producto" class="card-img-top" alt="{{ elemento.nombre_producto }}">
+        <img [src]="elemento.imagen_producto" class="card-img-top img-fluid" alt="{{ elemento.nombre_producto }}">
         <div class="card-body">
           <h5 class="card-title">{{ elemento.nombre_producto }}</h5>
           <p class="card-text">Precio: {{ elemento.precio_producto }}</p>
@@ -32,3 +32,5 @@
     <p>No hay elementos en el carrito.</p>
   </div>
 </div>
+
+<app-footer></app-footer>

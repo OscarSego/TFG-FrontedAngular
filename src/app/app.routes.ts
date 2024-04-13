@@ -7,14 +7,18 @@ import { AuthGuard } from './services/authGuard';
 import { SearchProductComponent } from './components/search-product/search-product.component';
 import { CarroComponent } from './components/carro/carro.component'
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { PublicHomeComponent } from './public-home/public-home.component'
+import { PublicContactoComponent } from './public-contacto/public-contacto.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full'},
+    { path: '', redirectTo: 'homePublic', pathMatch: 'full'},
+    { path: 'homePublic', component: PublicHomeComponent},
+    { path: 'contactoPublic', component: PublicContactoComponent},
     { path: 'login', component: LoginComponent},
     { path: 'signin', component: SignInComponent},
-    { path: 'home', component: HomeComponent},
-    { path: 'producto', component: ProductComponent,},
-    { path: 'product-search', component: SearchProductComponent},
-    { path: 'carro-compra', component: CarroComponent},
-    { path: 'contacto', component: ContactoComponent} 
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+    { path: 'producto', component: ProductComponent, canActivate: [AuthGuard]},
+    { path: 'product-search', component: SearchProductComponent, canActivate: [AuthGuard]},
+    { path: 'carro-compra', component: CarroComponent, canActivate: [AuthGuard]},
+    { path: 'contacto', component: ContactoComponent, canActivate: [AuthGuard]} 
 ];

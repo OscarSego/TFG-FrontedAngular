@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CarritoService } from '../../services/carro.service';
 import { UserItemCarrito } from '../../interfaces/carro';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-carro',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, ReactiveFormsModule, FormsModule, CommonModule, NavbarComponent, HeaderComponent],
+  imports: [RouterOutlet, RouterModule, ReactiveFormsModule, FormsModule, CommonModule, NavbarComponent, HeaderComponent,FooterComponent],
   templateUrl: './carro.component.html',
   styleUrl: './carro.component.css'
 })
