@@ -6,3 +6,9 @@
 .card {
 margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
 }
+
+.mensaje-producto {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}

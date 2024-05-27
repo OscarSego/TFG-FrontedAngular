@@ -17,18 +17,26 @@ import { FooterComponent } from '../footer/footer.component';
 })
 export class ProductComponent {
 
+  // Variable para almacenar la lista de productos
   listProducts: Product[] = [];
+
+  mensajeProductoAgregado: string = '';
   
+  // Inyectamos ProductService en el constructor
   constructor(private _productService: ProductService){}
 
+  // Método que se ejecuta al inicializar el componente
   ngOnInit(): void{
     this.getProductList();
   }
 
+  // Método para obtener la lista de productos desde el servicio ProductService
   getProductList(){
+    // Verificamos que la respuesta sea una lista válida y no esté vacía
     this._productService.listProducts().subscribe((data: any[]) => {
       if (Array.isArray(data) && data.length > 0) {
         console.table(data);
+        // Asignamos la lista de productos a la variable local
         this.listProducts = data;
       } else {
         console.error("La respuesta del servicio no contiene una lista de productos válida o está vacía.");
@@ -36,14 +44,17 @@ export class ProductComponent {
     });
   }
 
+  // Método para agregar un producto al carrito
   agregarAlCarrito(productoId: number): void {
     this._productService.agregarAlCarrito(productoId).subscribe(
       (productos: Product[]) => {
-        // Manejar la respuesta aquí si es necesario
+        this.mensajeProductoAgregado = 'Producto agregado al carrito';
+        setTimeout(() => {
+          this.mensajeProductoAgregado = '';
+        }, 3000);
       },
       (error) => {
         console.error(error);
-        // Manejar el error aquí, por ejemplo, redirigir a la página de inicio de sesión si hay un error de autorización
       }
     );
   }

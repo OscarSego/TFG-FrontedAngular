@@ -1,0 +1,17 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Establece el alto mínimo del contenido al 100% de la altura de la ventana */
+  }
+  
+  .container {
+    flex: 1; /* Hace que el contenedor ocupe todo el espacio disponible verticalmente */
+  }
+
+  .mensaje-producto {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+  
+  

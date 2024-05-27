@@ -15,19 +15,24 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class SignInComponent {
 
+  // Variables para almacenar los datos del formulario
   email: string = "";
   password:string = "";
   confirmPassword:string = "";
+  errorMessage:string = "";
 
+  // Método que se ejecuta al inicializar el componente
   ngOnInit(): void {
 
   }
 
+  // Inyectamos UserService y Router en el constructor
   constructor(
     private _userService: UserService,
     private router: Router
   ){}
 
+  // Método para añadir un nuevo usuario
   addUser(){
 
     // Validar que el usuario ingrese valore
@@ -39,8 +44,8 @@ export class SignInComponent {
 
     // Validamos que las password sean iguales
 
-    if(this.password != this.confirmPassword){
-      alert("Las password no coinciden");
+    if (this.password !== this.confirmPassword) {
+      this.errorMessage = "Las contraseñas no coinciden";
       return;
     }
 
@@ -51,11 +56,18 @@ export class SignInComponent {
       password: this.password
     }
 
-
+    // Llamamos al método signIn del servicio UserService
     this._userService.signIn(user).subscribe(data => {
-      this.router.navigate(['/login']);
-    })
-
+      // Comprobamos si hay respuesta del servidor
+      if (data) {
+        this.router.navigate(['/login']);
+      } else {
+        this.errorMessage = "Error al registrar usuario, por favor intenta nuevamente.";
+      }
+    }, error => {
+      // Manejo de errores en la petición HTTP
+      this.errorMessage = "Error en el servidor, por favor intenta nuevamente más tarde.";
+    });
   }
 
 

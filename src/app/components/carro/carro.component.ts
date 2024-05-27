@@ -17,23 +17,28 @@ import { FooterComponent } from '../footer/footer.component';
 })
 export class CarroComponent {
 
+  // Lista para almacenar los elementos del carrito
   elementosCarrito: UserItemCarrito[] = [];
+  // Variable para almacenar el ID del ítem
   itemID: number = 0;
 
+  // Inyectamos CarritoService en el constructor
   constructor(private carritoService: CarritoService) { }
 
+  // Método que se ejecuta al inicializar el componente
   ngOnInit(): void {
-    this.verCarrito();
+    this.verCarrito(); // Llamamos al método para ver el carrito
   }
 
+  // Método para obtener los elementos del carrito
   verCarrito(): void {
     this.carritoService.verCarrito().subscribe(
       (data: UserItemCarrito[]) => {
-        this.elementosCarrito = data;
-        console.log(this.elementosCarrito);
+        this.elementosCarrito = data; // Asignamos los datos recibidos a la lista de elementos del carrito
+        console.log(this.elementosCarrito); // Mostramos los datos en la consola
       },
       (error) => {
-        console.error('Error al obtener el carrito:', error);
+        console.error('Error al obtener el carrito:', error); // Mostramos el error en caso de fallo
       }
     );
   }

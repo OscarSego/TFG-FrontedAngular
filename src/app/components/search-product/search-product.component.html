@@ -1,21 +1,30 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 
-<div class="container mt-4">
-  <div *ngIf="product" class="row">
-    <div class="col-md-6">
-      <div class="text-center">
-        <img [src]="'http://localhost:8000' + product.imagen" alt="{{ product.nombre }}" class="img-fluid">
+<!-- Mensaje de producto agregado al carrito -->
+<div *ngIf="mensajeProductoAgregado" class="alert alert-success mensaje-producto">
+  {{ mensajeProductoAgregado }}
+</div>
+
+<div class="content">
+  <div class="container mt-4">
+    <div *ngIf="product" class="row">
+      <div class="col-md-6">
+        <div class="text-center">
+          <img [src]="'http://localhost:8000' + product.imagen" alt="{{ product.nombre }}" class="img-fluid">
+        </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <div class="d-flex justify-content-center flex-column align-items-center">
-        <h2 class="font-weight-bold">{{ product.nombre }}</h2>
-        <p>{{ product.descripcion }}</p>
-        <p><strong>Precio:</strong> {{ product.precio | currency }}</p>
-        <!-- Botones de agregar -->
-        <button class="btn btn-primary">Agregar al carrito</button>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-center flex-column align-items-center">
+          <h2 class="font-weight-bold">{{ product.nombre }}</h2>
+          <p>{{ product.descripcion }}</p>
+          <p><strong>Precio:</strong> {{ product.precio | currency }}</p>
+          <!-- Botones de agregar -->
+          <button class="btn btn-primary" (click)="agregarAlCarrito(product.id)">Agregar al carrito</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<app-footer></app-footer>

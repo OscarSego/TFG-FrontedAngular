@@ -1,35 +1,38 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
-<div class="container">
-  <!-- Contenedor para el título y el botón "Vaciar Carrito" -->
-  <div class="row">
-    <div class="col">
-      <h2 class="mb-0 mt-4">Carrito de Compras</h2>
-    </div>
-    <div class="col-auto">
-      <button class="btn btn-primary mt-4" (click)="borrarCarro()">Vaciar Carrito</button>
-    </div>
-  </div>
 
-  <div *ngIf="elementosCarrito && elementosCarrito.length > 0" class="row mt-4">
-    <div *ngFor="let elemento of elementosCarrito; let i = index" class="col-md-4 mb-4">
-      <div class="card">
-        <img [src]="elemento.imagen_producto" class="card-img-top img-fluid" alt="{{ elemento.nombre_producto }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ elemento.nombre_producto }}</h5>
-          <p class="card-text">Precio: {{ elemento.precio_producto }}</p>
-          <div class="cantidad-container">
-            <p class="card-text cantidad">Cantidad: {{ elemento.cantidad }}</p>
-            <button class="btn btn-sm btn-aumentar" (click)="aumentarCantidad(elemento.producto_id)">+</button>
-            <button class="btn btn-sm btn-quitar" (click)="disminuirCantidad(elemento.producto_id)">-</button>
+<div class="content">
+  <div class="container">
+    <!-- Contenedor para el título y el botón "Vaciar Carrito" -->
+    <div class="row">
+      <div class="col">
+        <h2 class="mb-0 mt-4">Carrito de Compras</h2>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-primary mt-4" (click)="borrarCarro()">Vaciar Carrito</button>
+      </div>
+    </div>
+
+    <div *ngIf="elementosCarrito && elementosCarrito.length > 0" class="row mt-4">
+      <div *ngFor="let elemento of elementosCarrito; let i = index" class="col-md-4 mb-4">
+        <div class="card">
+          <img [src]="elemento.imagen_producto" class="card-img-top img-fluid" alt="{{ elemento.nombre_producto }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ elemento.nombre_producto }}</h5>
+            <p class="card-text">Precio: {{ elemento.precio_producto }}</p>
+            <div class="cantidad-container">
+              <p class="card-text cantidad">Cantidad: {{ elemento.cantidad }}</p>
+              <button class="btn btn-sm btn-aumentar" (click)="aumentarCantidad(elemento.producto_id)">+</button>
+              <button class="btn btn-sm btn-quitar" (click)="disminuirCantidad(elemento.producto_id)">-</button>
+            </div>
+            <p class="card-text">Total: {{ elemento.cantidad * elemento.precio_producto }}</p>
           </div>
-          <p class="card-text">Total: {{ elemento.cantidad * elemento.precio_producto }}</p>
         </div>
       </div>
     </div>
-  </div>
-  <div *ngIf="!elementosCarrito || elementosCarrito.length === 0">
-    <p>No hay elementos en el carrito.</p>
+    <div *ngIf="!elementosCarrito || elementosCarrito.length === 0">
+      <p>No hay elementos en el carrito.</p>
+    </div>
   </div>
 </div>
 
