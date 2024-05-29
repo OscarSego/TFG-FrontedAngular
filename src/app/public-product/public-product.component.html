@@ -1,0 +1,23 @@
+<app-header></app-header>
+<app-public-navbar></app-public-navbar>
+<!-- Mensaje de producto agregado al carrito -->
+<div *ngIf="mensajeProductoAgregado" class="alert alert-success mensaje-producto">
+  {{ mensajeProductoAgregado }}
+</div>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of listProducts">
+      <div class="card">
+        <img class="card-img-top" src="http://localhost:8000{{ product.imagen }}" alt="{{ product.nombre }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.nombre }}</h5>
+          <p class="card-text">{{ product.descripcion }}</p>
+          <p class="card-text"><strong>Precio:</strong> {{ product.precio }} $</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

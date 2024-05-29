@@ -1,0 +1,14 @@
+# Ignorar node_modules, ya que se instalan durante la construcción
+node_modules
+# Ignorar carpetas de salida de compilación
+dist
+# Ignorar archivos de configuración de herramientas
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+# Ignorar archivos de control de versiones
+.git
+.gitignore
+# Ignorar archivos y carpetas específicos del entorno
+.env

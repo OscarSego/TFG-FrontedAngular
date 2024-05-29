@@ -20,6 +20,7 @@ export class ContactoComponent {
   nombre: string = '';
   correo: string = '';
   mensaje: string = '';
+  formularioEnviado: string = "";
 
   // Inyectamos ContactoService y Router en el constructor
   constructor(private contactoService: ContactoService, private router: Router) {}
@@ -29,8 +30,10 @@ export class ContactoComponent {
     // Llamamos al método enviarCorreo del servicio ContactoService
     this.contactoService.enviarCorreo(this.nombre, this.correo, this.mensaje)
       .subscribe(response => {
-        // En caso de éxito, redirigimos al usuario a la página de inicio
-        this.router.navigate(['/home']);
+        this.formularioEnviado = "Correo enviado";
+        setTimeout(() => {
+          this.router.navigate(['/home']); // Redirecciona a la página de login después de 3 segundos
+        }, 2000);
       }, error => {
         // En caso de error, lo mostramos en la consola
         console.error(error);

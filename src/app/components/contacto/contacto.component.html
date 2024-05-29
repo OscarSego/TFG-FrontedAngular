@@ -1,5 +1,8 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
+<div *ngIf="formularioEnviado" class="alert alert-success text-center mt-3 mensaje-form">
+    {{formularioEnviado}}
+</div>
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-md-6">

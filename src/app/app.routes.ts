@@ -9,10 +9,12 @@ import { CarroComponent } from './components/carro/carro.component'
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { PublicHomeComponent } from './public-home/public-home.component'
 import { PublicContactoComponent } from './public-contacto/public-contacto.component';
+import { PublicProductComponent } from './public-product/public-product.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'homePublic', pathMatch: 'full'},
     { path: 'homePublic', component: PublicHomeComponent},
+    { path: 'ProductPublic', component: PublicProductComponent},
     { path: 'contactoPublic', component: PublicContactoComponent},
     { path: 'login', component: LoginComponent},
     { path: 'signin', component: SignInComponent},

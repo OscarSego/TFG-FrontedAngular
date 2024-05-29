@@ -64,9 +64,6 @@ export class SignInComponent {
       } else {
         this.errorMessage = "Error al registrar usuario, por favor intenta nuevamente.";
       }
-    }, error => {
-      // Manejo de errores en la petición HTTP
-      this.errorMessage = "Error en el servidor, por favor intenta nuevamente más tarde.";
     });
   }
 
